@@ -1,0 +1,9 @@
+[submodule "odoo"]
+	path = odoo
+	url = git@github.com:cxfos/cxfos_odoo.git
+[submodule "enterprise"]
+	path = enterprise
+	url = git@github.com:cxfos/cxfos_odoo_enterprise.git
+[submodule "tutorials"]
+	path = tutorials
+	url = git@github.com:cxfos/cxfos_odoo_tutorials.git
