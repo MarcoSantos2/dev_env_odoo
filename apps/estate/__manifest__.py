@@ -6,5 +6,7 @@
     'application': True,
     'category': 'Real Estate',
     'description': 'Real estate management module',
-    'data': [],
+    'data': [
+        'security/ir.model.access.csv'
+    ],
 }
