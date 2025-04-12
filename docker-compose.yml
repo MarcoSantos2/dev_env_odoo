@@ -12,6 +12,8 @@ services:
       - ./odoo/addons:/mnt/addons
       - ./enterprise:/mnt/enterprise
       - ./tutorials:/mnt/tutorials
+      - ./apps:/mnt/apps
+    command: ["odoo", "-u", "estate", "-d", "database_test_app"]
     environment:
     - HOST=db
     - USER=odoo
@@ -28,6 +30,9 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
+    ports:
+      - "5532:5432"
 volumes:
   odoo-web-data:
   odoo-db-data:
+

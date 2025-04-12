@@ -1,5 +1,13 @@
 # Common Docker Commands
 
+## Docker Compose
+- `docker-compose up` - Create and start containers defined in docker-compose.yml
+  - `docker-compose up -d` - Run in detached mode
+- `docker-compose down` - Stop and remove containers defined in docker-compose.yml
+- `docker-compose ps` - List containers defined in docker-compose.yml
+- `docker-compose logs` - View logs from all containers
+- `docker-compose build` - Build or rebuild services
+
 ## Container Management
 - `docker run [options] image [command]` - Create and start a new container
   - Example: `docker run -d -p 8080:80 nginx`
@@ -50,14 +58,6 @@
 - `docker system prune` - Remove all unused containers, networks, images, and volumes
 - `docker info` - Display system-wide information
 - `docker version` - Show Docker version information
-
-## Docker Compose
-- `docker-compose up` - Create and start containers defined in docker-compose.yml
-  - `docker-compose up -d` - Run in detached mode
-- `docker-compose down` - Stop and remove containers defined in docker-compose.yml
-- `docker-compose ps` - List containers defined in docker-compose.yml
-- `docker-compose logs` - View logs from all containers
-- `docker-compose build` - Build or rebuild services
 
 ## Tips
 - Use `docker --help` to see all available commands
