@@ -13,7 +13,7 @@ services:
       - ./enterprise:/mnt/enterprise
       - ./tutorials:/mnt/tutorials
       - ./apps:/mnt/apps
-    command: ["odoo", "-u", "estate", "-d", "database_test_app"]
+    command: ["odoo", "-u", "estate", "-d", "database_test_app", "--dev", "xml"]
     environment:
     - HOST=db
     - USER=odoo
