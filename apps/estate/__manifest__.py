@@ -6,6 +6,7 @@
     'application': True,
     'category': 'Real Estate',
     'description': 'Real estate management module',
+    'license': 'LGPL-3',
     'data': [
         'security/ir.model.access.csv',
         'views/estate_property_offer_views.xml',
