@@ -17,55 +17,64 @@
         </field>
     </record>
 
-    <!-- Form View -->
-    <record id="estate_property_view_form" model="ir.ui.view">
-        <field name="name">estate.property.form</field>
-        <field name="model">estate.property</field>
-        <field name="arch" type="xml">
-            <form string="Property">
-                <sheet>
-                    <div class="oe_title">
-                        <h1>
-                            <field name="name" placeholder="Property Name"/>
-                        </h1>
-                    </div>
+<!-- Form View -->
+<record id="estate_property_view_form" model="ir.ui.view">
+    <field name="name">estate.property.form</field>
+    <field name="model">estate.property</field>
+    <field name="arch" type="xml">
+        <form string="Property">
+            <sheet>
+                <div class="oe_title">
+                    <h1>
+                        <field name="name" placeholder="Property Name"/>
+                    </h1>
+                    <field name="tag_ids" widget="many2many_tags"/>
+                </div>
+                <group>
                     <group>
-                        <group>
-                            <field name="postcode"/>
-                            <field name="date_availability"/>
-                        </group>
-                        <group>
-                            <field name="expected_price"/>
-                            <field name="selling_price"/>
-                            <field name="active" invisible="1"/>
-                        </group>
+                        <field name="postcode"/>
+                        <field name="date_availability"/>
                     </group>
-                    <notebook>
-                        <page string="Description">
+                    <group>
+                        <field name="expected_price"/>
+                        <field name="selling_price"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Description">
+                        <group>
                             <group>
-                                <group>
-                                    <field name="description"/>
-                                    <field name="bedrooms"/>
-                                    <field name="living_area"/>
-                                    <field name="facades"/>
-                                    <field name="garage"/>
-                                    <field name="garden"/>
-                                    <field name="garden_area" invisible="not garden"/>
-                                    <field name="garden_orientation" invisible="not garden"/>
-                                </group>
+                                <field name="description"/>
+                                <field name="bedrooms"/>
+                                <field name="living_area"/>
+                                <field name="facades"/>
+                                <field name="garage"/>
+                                <field name="garden"/>
+                                <field name="garden_area" invisible="not garden"/>
+                                <field name="garden_orientation" invisible="not garden"/>
                             </group>
-                        </page>
-                        <page string="Other Info">
-                            <group>
-                                <field name="seller_id"/>
-                                <field name="buyer_id"/>
-                            </group>
-                        </page>
-                    </notebook>
-                </sheet>
-            </form>
-        </field>
-    </record>
+                        </group>
+                    </page>
+                    <page string="Offers">
+                        <field name="offer_ids">
+                            <list string="Property Offers" editable="bottom">
+                                <field name="price"/>
+                                <field name="partner_id"/>
+                                <field name="status"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page string="Other Info">
+                        <group>
+                            <field name="seller_id"/>
+                            <field name="buyer_id"/>
+                        </group>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
 
     <!-- Search View -->
     <record id="estate_property_view_search" model="ir.ui.view">

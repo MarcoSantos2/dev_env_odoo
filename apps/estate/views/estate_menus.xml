@@ -13,12 +13,16 @@
                       action="estate_property_action"/>
         
         </menuitem>
-        
-        <!-- First Level Property Type Menu -->
+
+        <!-- First Level Settings Menu -->
         <menuitem id="estate_settings_menu" 
                   name="Settings">
+            <!-- Property Type Menu -->
             <menuitem id="estate_property_type_menu_action" 
                       action="estate_property_type_action"/>
+            <!-- Property Tag Menu -->
+            <menuitem id="estate_property_tag_menu_action" 
+                      action="estate_property_tag_action"/>
         </menuitem>
     </menuitem>
 </odoo>
