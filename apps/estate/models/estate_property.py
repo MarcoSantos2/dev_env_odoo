@@ -1,6 +1,7 @@
 from odoo import models, fields, api
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 from dateutil.relativedelta import relativedelta
+from odoo.tools import float_compare, float_is_zero
 
 class EstateProperty(models.Model):
     _name = 'estate.property'
@@ -10,7 +11,7 @@ class EstateProperty(models.Model):
     description = fields.Text()
     postcode = fields.Char()
     date_availability = fields.Date(default=lambda self: fields.Date.today() + relativedelta(months=3), copy=False)
-    expected_price = fields.Float(required=True, )
+    expected_price = fields.Float(required=True)
     selling_price = fields.Float(readonly=True, copy=False)
     bedrooms = fields.Integer(default=2)
     living_area = fields.Integer()
@@ -69,3 +70,12 @@ class EstateProperty(models.Model):
                 raise UserError("Sold properties cannot be canceled.")
             prop.state = 'canceled'
         return True
+
+    @api.constrains('selling_price', 'expected_price')
+    def _check_price_difference(self):
+        for prop in self:
+            if not float_is_zero(prop.selling_price, precision_digits=2):
+                min_price = prop.expected_price * 0.9
+                if float_compare(prop.selling_price, min_price, precision_digits=2) < 0:
+                    raise ValidationError(f"Selling price cannot be lower than 90% of the expected price! "
+                                        f"Minimum allowed: {min_price}")
