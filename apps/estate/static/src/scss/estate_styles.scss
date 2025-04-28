@@ -1,0 +1,427 @@
+// Estate Module Custom Styles
+// A modern, professional design system for real estate property management
+
+// ======== Color System ========
+// Real estate color palette: warm neutrals with blue accents for trust and professionalism
+
+// Primary colors
+$o-estate-primary: #2c5282; // Deep blue - trust, stability
+$o-estate-primary-light: #4299e1; // Lighter blue for interactive elements
+$o-estate-primary-dark: #1a365d; // Darker blue for headers, emphasis
+
+// Secondary colors
+$o-estate-secondary: #e53e3e; // Warm red - for attention, highlights
+$o-estate-secondary-light: #fc8181; // Lighter red for success states
+$o-estate-secondary-dark: #9b2c2c; // Darker red for sold properties
+
+// Neutral palette
+$o-estate-neutral-100: #f7fafc; // Almost white - backgrounds
+$o-estate-neutral-200: #edf2f7; // Light grey - alternating rows, cards
+$o-estate-neutral-300: #e2e8f0; // Medium light grey - borders, dividers
+$o-estate-neutral-400: #cbd5e0; // Medium grey - disabled states
+$o-estate-neutral-500: #a0aec0; // Medium grey - placeholder text
+$o-estate-neutral-600: #718096; // Medium dark grey - body text
+$o-estate-neutral-700: #4a5568; // Dark grey - secondary text
+$o-estate-neutral-800: #2d3748; // Very dark grey - primary text
+$o-estate-neutral-900: #1a202c; // Almost black - headings
+
+// Status colors
+$o-estate-status-new: #4299e1; // Blue - new properties
+$o-estate-status-offer-received: #48bb78; // Green - received offers
+$o-estate-status-offer-accepted: #ecc94b; // Yellow - accepted offers
+$o-estate-status-sold: #9b2c2c; // Dark red - sold
+$o-estate-status-canceled: #718096; // Grey - canceled
+
+// ======== Typography ========
+// Using system fonts for better performance and consistent look
+
+$o-estate-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$o-estate-font-family-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+// Font sizes with a comfortable hierarchy
+$o-estate-font-size-xs: 0.75rem;   // 12px - small labels, tags
+$o-estate-font-size-sm: 0.875rem;  // 14px - secondary info
+$o-estate-font-size-base: 1rem;    // 16px - body text
+$o-estate-font-size-lg: 1.125rem;  // 18px - subtitles
+$o-estate-font-size-xl: 1.25rem;   // 20px - section headings
+$o-estate-font-size-2xl: 1.5rem;   // 24px - page titles
+$o-estate-font-size-3xl: 1.875rem; // 30px - large titles
+
+// Line heights
+$o-estate-line-height-tight: 1.25;
+$o-estate-line-height-base: 1.5;
+$o-estate-line-height-relaxed: 1.75;
+
+// ======== Spacing System ========
+$o-estate-space-1: 0.25rem; // 4px - minimal spacing
+$o-estate-space-2: 0.5rem;  // 8px - tight spacing
+$o-estate-space-3: 0.75rem; // 12px - small elements
+$o-estate-space-4: 1rem;    // 16px - standard spacing
+$o-estate-space-6: 1.5rem;  // 24px - medium spacing
+$o-estate-space-8: 2rem;    // 32px - section spacing
+$o-estate-space-12: 3rem;   // 48px - large spacing
+
+// ======== Component Styling ========
+$o-estate-border-radius-sm: 0.125rem; // 2px
+$o-estate-border-radius: 0.25rem;     // 4px
+$o-estate-border-radius-lg: 0.5rem;   // 8px
+$o-estate-border-width: 1px;
+$o-estate-border-color: $o-estate-neutral-300;
+
+$o-estate-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$o-estate-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+$o-estate-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$o-estate-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+// ======== Kanban View Styling ========
+.o_kanban_view.o_estate_kanban {
+    // Overall kanban layout enhancements
+    padding: $o-estate-space-4;
+    
+    // Kanban record (card) styling
+    .o_kanban_record {
+        background-color: white;
+        border-radius: $o-estate-border-radius-lg;
+        border: $o-estate-border-width solid $o-estate-border-color;
+        padding: $o-estate-space-4;
+        margin-bottom: $o-estate-space-3;
+        box-shadow: $o-estate-shadow;
+        transition: all 0.2s ease;
+        
+        &:hover, &:focus {
+            box-shadow: $o-estate-shadow-md;
+            transform: translateY(-2px);
+        }
+        
+        // Property title
+        .o_estate_property_title {
+            font-size: $o-estate-font-size-lg;
+            font-weight: 600;
+            color: $o-estate-neutral-800;
+            margin-bottom: $o-estate-space-2;
+            line-height: $o-estate-line-height-tight;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        // Property price
+        .o_estate_property_price {
+            font-size: $o-estate-font-size-base;
+            font-weight: 600;
+            color: $o-estate-primary;
+            margin-top: $o-estate-space-2;
+            margin-bottom: $o-estate-space-3;
+        }
+        
+        // Property offer
+        .o_estate_property_offer {
+            font-size: $o-estate-font-size-sm;
+            color: $o-estate-status-offer-received;
+            font-weight: 500;
+            margin-bottom: $o-estate-space-2;
+        }
+        
+        // Property selling price
+        .o_estate_property_selling {
+            font-size: $o-estate-font-size-sm;
+            color: $o-estate-status-offer-accepted;
+            font-weight: 500;
+            margin-bottom: $o-estate-space-2;
+        }
+        
+        // Property tags
+        .o_field_many2many_tags {
+            margin-top: $o-estate-space-3;
+            
+            .o_tag {
+                background-color: $o-estate-neutral-200;
+                color: $o-estate-neutral-700;
+                border-radius: $o-estate-border-radius;
+                padding: $o-estate-space-1 $o-estate-space-2;
+                font-size: $o-estate-font-size-xs;
+                font-weight: 500;
+                margin-right: $o-estate-space-1;
+                border: none;
+                
+                &:hover {
+                    background-color: $o-estate-neutral-300;
+                }
+            }
+        }
+    }
+    
+    // Status-based styling
+    .o_kanban_record {
+        &.o_estate_status_new {
+            border-left: 3px solid $o-estate-status-new;
+        }
+        
+        &.o_estate_status_offer_received {
+            border-left: 3px solid $o-estate-status-offer-received;
+        }
+        
+        &.o_estate_status_offer_accepted {
+            border-left: 3px solid $o-estate-status-offer-accepted;
+        }
+        
+        &.o_estate_status_sold {
+            border-left: 3px solid $o-estate-status-sold;
+            background-color: transparentize($o-estate-neutral-200, 0.5);
+        }
+        
+        &.o_estate_status_canceled {
+            border-left: 3px solid $o-estate-status-canceled;
+            background-color: transparentize($o-estate-neutral-200, 0.5);
+            opacity: 0.8;
+        }
+    }
+    
+    // Kanban group styling
+    .o_kanban_group {
+        background-color: $o-estate-neutral-100;
+        border-radius: $o-estate-border-radius;
+        padding: $o-estate-space-2;
+        margin-right: $o-estate-space-3;
+        
+        .o_kanban_header {
+            background-color: $o-estate-neutral-200;
+            border-radius: $o-estate-border-radius $o-estate-border-radius 0 0;
+            padding: $o-estate-space-2 $o-estate-space-3;
+            margin-bottom: $o-estate-space-3;
+            
+            .o_kanban_title {
+                font-size: $o-estate-font-size-base;
+                font-weight: 600;
+                color: $o-estate-neutral-700;
+            }
+            
+            .o_kanban_counter {
+                font-size: $o-estate-font-size-sm;
+                color: $o-estate-neutral-600;
+                background-color: $o-estate-neutral-100;
+                border-radius: $o-estate-border-radius;
+                padding: 0 $o-estate-space-2;
+            }
+        }
+    }
+}
+
+// ======== Form View Styling ========
+.o_form_view.o_estate_form {
+    background-color: $o-estate-neutral-100;
+    
+    .o_form_sheet {
+        border-radius: $o-estate-border-radius-lg;
+        box-shadow: $o-estate-shadow-md;
+        padding: $o-estate-space-6;
+        max-width: 1200px; // Wider form for better spacing
+        margin: $o-estate-space-6 auto;
+        
+        .oe_title {
+            h1 {
+                font-size: $o-estate-font-size-2xl;
+                font-weight: 600;
+                color: $o-estate-primary-dark;
+                margin-bottom: $o-estate-space-4;
+                text-align: center; // Center the title
+            }
+            
+            // Center the property tags
+            .o_field_many2many_tags {
+                text-align: center;
+                justify-content: center;
+                display: flex;
+                flex-wrap: wrap;
+                margin-bottom: $o-estate-space-4;
+            }
+        }
+        
+        // Field groups - align with the status bar width
+        .o_group {
+            margin-bottom: $o-estate-space-6;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            
+            .o_form_label {
+                font-weight: 500;
+                color: $o-estate-neutral-700;
+            }
+            
+            .o_form_field {
+                margin-bottom: $o-estate-space-3;
+            }
+        }
+        
+        // Notebook tabs
+        .o_notebook {
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            
+            .nav-tabs {
+                border-bottom: $o-estate-border-width solid $o-estate-neutral-300;
+                display: flex;
+                justify-content: center; // Center the tabs
+                
+                .nav-item {
+                    margin-right: $o-estate-space-2;
+                    
+                    .nav-link {
+                        color: $o-estate-neutral-600;
+                        font-weight: 500;
+                        border: none;
+                        padding: $o-estate-space-3 $o-estate-space-4;
+                        
+                        &.active {
+                            color: $o-estate-primary;
+                            border-bottom: 2px solid $o-estate-primary;
+                            background-color: transparent;
+                        }
+                        
+                        &:hover:not(.active) {
+                            color: $o-estate-neutral-800;
+                            border-bottom: 2px solid $o-estate-neutral-400;
+                        }
+                    }
+                }
+            }
+            
+            .tab-content {
+                padding: $o-estate-space-4 0;
+            }
+        }
+    }
+    
+    // Status bar
+    .o_form_statusbar {
+        background-color: $o-estate-neutral-100;
+        border-bottom: $o-estate-border-width solid $o-estate-neutral-300;
+        padding: $o-estate-space-2;
+        
+        // Center the status bar elements
+        display: flex;
+        justify-content: center;
+        
+        .o_statusbar_buttons {
+            .btn {
+                margin-right: $o-estate-space-2;
+                border-radius: $o-estate-border-radius;
+                padding: $o-estate-space-2 $o-estate-space-4;
+                font-weight: 500;
+                transition: all 0.2s ease;
+                
+                &.oe_highlight {
+                    background-color: $o-estate-primary;
+                    border-color: $o-estate-primary;
+                    
+                    &:hover, &:focus {
+                        background-color: $o-estate-primary-dark;
+                        border-color: $o-estate-primary-dark;
+                    }
+                }
+                
+                &:not(.oe_highlight) {
+                    color: $o-estate-neutral-700;
+                    background-color: white;
+                    border-color: $o-estate-neutral-300;
+                    
+                    &:hover, &:focus {
+                        color: $o-estate-neutral-900;
+                        background-color: $o-estate-neutral-200;
+                    }
+                }
+            }
+        }
+        
+        .o_statusbar_status {
+            .o_arrow_button {
+                background-color: transparent;
+                color: $o-estate-neutral-600;
+                font-weight: 500;
+                
+                &.btn-primary {
+                    color: $o-estate-primary;
+                    font-weight: 600;
+                }
+                
+                &:not(.disabled):hover {
+                    color: $o-estate-primary-light;
+                }
+                
+                &.disabled {
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
+    
+    // Style for property details section
+    .o_page_description {
+        margin-top: $o-estate-space-4;
+        
+        .o_group {
+            border: 1px solid $o-estate-neutral-300;
+            border-radius: $o-estate-border-radius-lg;
+            padding: $o-estate-space-4;
+            background-color: white;
+            box-shadow: $o-estate-shadow-sm;
+            
+            .o_form_label {
+                font-weight: 600;
+                color: $o-estate-primary-dark;
+            }
+            
+            .o_form_field {
+                padding: $o-estate-space-2;
+            }
+        }
+    }
+}
+
+// ======== Responsive Styling ========
+@media (max-width: 767.98px) {
+    .o_kanban_view.o_estate_kanban {
+        padding: $o-estate-space-2;
+        
+        .o_kanban_record {
+            padding: $o-estate-space-3;
+        }
+    }
+    
+    .o_form_view.o_estate_form {
+        .o_form_sheet {
+            padding: $o-estate-space-4;
+            margin: $o-estate-space-2;
+            
+            .oe_title h1 {
+                font-size: $o-estate-font-size-xl;
+            }
+        }
+    }
+}
+
+// ======== Accessibility Enhancements ========
+// Focus states
+button:focus,
+a:focus,
+.btn:focus,
+.o_kanban_record:focus,
+.nav-link:focus {
+    outline: 2px solid $o-estate-primary-light;
+    outline-offset: 2px;
+}
+
+// Screen reader only class
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+} 

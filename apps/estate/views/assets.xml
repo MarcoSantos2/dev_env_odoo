@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="estate_assets_backend" model="ir.asset">
+            <field name="name">Estate Backend Assets</field>
+            <field name="bundle">web.assets_backend</field>
+            <field name="path">/estate/static/src/scss/estate_styles.scss</field>
+        </record>
+    </data>
+</odoo> 
