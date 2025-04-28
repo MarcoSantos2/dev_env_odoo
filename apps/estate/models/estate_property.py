@@ -22,8 +22,14 @@ class EstateProperty(models.Model):
     garden_area = fields.Integer()
     garden_orientation = fields.Selection([('north', 'North'), ('south', 'South'), ('east', 'East'), ('west', 'West')])
     active = fields.Boolean(default=True)
-    state = fields.Selection([('new', 'New'), ('offer_accepted', 'Offer Accepted'), ('sold', 'Sold'), ('canceled', 'Canceled')], default='new', required=True, copy=False)
-    property_type_id = fields.Many2one('estate.property.type', string='Property Type', options={'no_create': True, 'no_edit': True})
+    state = fields.Selection([
+        ('new', 'New'),
+        ('offer_received', 'Offer Received'),
+        ('offer_accepted', 'Offer Accepted'),
+        ('sold', 'Sold'),
+        ('canceled', 'Canceled')
+    ], default='new', required=True, copy=False)
+    property_type_id = fields.Many2one('estate.property.type', string='Property Type') # TODO: options={'no_create': True, 'no_edit': True}
     buyer_id = fields.Many2one('res.partner', string='Buyer', copy=False)
     seller_id = fields.Many2one('res.users', string='Salesman', default=lambda self: self.env.user)
     tag_ids = fields.Many2many('estate.property.tag', string='Tags')
@@ -80,3 +86,9 @@ class EstateProperty(models.Model):
                 if float_compare(prop.selling_price, min_price, precision_digits=2) < 0:
                     raise ValidationError(f"Selling price cannot be lower than 90% of the expected price! "
                                         f"Minimum allowed: {min_price}")
+
+    @api.ondelete(at_uninstall=False)
+    def _unlink_if_new_or_canceled(self):
+        for prop in self:
+            if prop.state not in ['new', 'canceled']:
+                raise UserError("Only new or canceled properties can be deleted.")

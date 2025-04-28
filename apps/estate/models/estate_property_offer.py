@@ -53,4 +53,19 @@ class EstatePropertyOffer(models.Model):
         self.ensure_one()
         self.status = 'refused'
         return True
+
+    @api.model
+    def create(self, vals):
+        property_id = self.env['estate.property'].browse(vals['property_id'])
+        
+        # Check if the offer amount is higher than existing offers
+        if property_id.offer_ids:
+            max_offer = max(offer.price for offer in property_id.offer_ids)
+            if vals['price'] <= max_offer:
+                raise UserError(f"The offer must be higher than {max_offer}")
+        
+        # Set property state to 'offer_received'
+        property_id.write({'state': 'offer_received'})
+        
+        return super().create(vals)
   

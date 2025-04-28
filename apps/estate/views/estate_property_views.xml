@@ -87,14 +87,14 @@
                                     name="action_accept"
                                     type="object"
                                     icon="fa-check"
-                                    string=""
+                                    string="Accept"
                                     title="Accept Offer"
                                     invisible="status != False"/>
                                 <button
                                     name="action_refuse"
                                     type="object"
                                     icon="fa-times"
-                                    string=""
+                                    string="Refuse"
                                     title="Refuse Offer"
                                     invisible="status != False"/>
                             </list>
